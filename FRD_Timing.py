@@ -22,10 +22,10 @@ for d,l in mnist_train_dataset:
         start = time.time()
         for angle in range(0,360,10):
             image = d.rotate(angle = angle, center = center)
-            # image.save('./raw_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.png')
+            image.save('./sample0.png')
             np_image = np.array(image)
             current_FRD = FRDs(np_image, numPoints, maxR, center)
-            # torch.save(torch.tensor(current_FRD), './FRD_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.pt')
+            torch.save(torch.tensor(current_FRD), './sample1.pt')
         counts[str(l)]+=1
         total_time = time.time()-start
         print('it took '+str(total_time)+' seconds')
