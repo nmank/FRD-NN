@@ -37,7 +37,7 @@ for d,l in mnist_train_dataset:
             plt.axis('off')
             plt.scatter(13,13, color = 'red', marker = 'x', s = 3)
             plt.scatter(x_vals, y_vals, color = 'red', s = 3)
-            plt.savefig('raw_image'+str(angle)+'.png')
+            plt.savefig('./plots/raw_image'+str(angle)+'.png')
 
             fft_vals[str(angle)] = abs(fft(c_vals[str(angle)]))[:numPoints*(radius)+1]
     only_one = False
@@ -69,12 +69,12 @@ plt.figure()
 plt.plot(c_vals[str(angles[0])], label = str(angle)+' degrees')
 plt.xlabel('Point Number')
 plt.ylabel('Interpolated Image Value')
-plt.savefig('interpolation.png')
+plt.savefig('./plots/interpolation.png')
 
 plt.figure()
 plt.plot(fft_vals[str(angles[0])], label = str(angle)+' degrees')
 plt.xlabel('Point Number')
 plt.ylabel('Magnitude of Fourier Transform')
-plt.savefig('fft.png')
+plt.savefig('./plots/fft.png')
 
 
