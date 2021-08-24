@@ -1,0 +1,8 @@
+*data*
+__pycache__*
+*.pt
+*.png
+FRD_datasets*
+raw_datasets*
+*.csv
+*.pth
