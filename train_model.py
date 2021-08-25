@@ -17,7 +17,7 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
         def my_loader(path):
             return torch.load(path)
 
-        image_dataset = {x: datasets.DatasetFolder(os.path.join(datapath, x), loader = my_loader, transform = transformations[x], extensions = ['.pt']) for x in ['train', 'test']}
+        image_dataset = {x: datasets.DatasetFolder(os.path.join(datapath, x), loader = my_loader, transform = transformations[x], extensions = '.pt') for x in ['train', 'test']}
     else:
         image_dataset = {x: datasets.ImageFolder(os.path.join(datapath, x), transformations[x]) for x in ['train', 'test']}
         
@@ -25,6 +25,8 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
     num_classes=len(image_dataset['train'].classes)
 
     criterion = torch.nn.CrossEntropyLoss()
+
+    model.float()
 
     train_loss=[]
     train_acc=[]
@@ -58,7 +60,7 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
 
                 with torch.set_grad_enabled(phase == 'train'):
 
-                    outputs = model(inputs)
+                    outputs = model(inputs.float())
                     loss = criterion(outputs, labels)
                     _, preds = torch.max(outputs, 1)
                     

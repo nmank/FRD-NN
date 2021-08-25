@@ -8,10 +8,10 @@ import my_models as mm
 
 datapath = './FRD_datasets/mnist_splits/0degrees/'
 
-base_dir = './experiments/mnist/frd/triangle_nn_3layer/'
+base_dir = './experiments/mnist/frd/triangle_nn_3layer_small_lr/'
 
-# os.mkdir(base_dir)
-# os.mkdir(base_dir + 'model')
+os.mkdir(base_dir)
+os.mkdir(base_dir + 'model')
 
 save_model_location = base_dir +'model/model'
 save_csv_location = base_dir +'training_stats.csv'
@@ -25,7 +25,7 @@ data_transforms = mm.choose_transforms('frd_nn')
 
 model = mm.choose_model('frd_triangle_nn_3layer')
 
-opt = optim.Adadelta(model.parameters(), lr=.1)
+opt = optim.Adadelta(model.parameters(), lr=.01)
 
 # nSamples = list(dict(Counter(image_dataset['train'].targets)).values())
 # weights = torch.tensor([1 - (x / sum(nSamples)) for x in nSamples]).to(device)

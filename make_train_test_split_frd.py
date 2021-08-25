@@ -26,34 +26,15 @@ new_base_dir = './FRD_datasets/mnist_splits/'
 
 #         for f in os.listdir(current_dir):
 #             current_file = current_dir + '/' + f
-#             if os.path.isfile(new_base_dir+'0degrees/train/'+str(num)+'/'+f[:-3]+'.png'):
+#             if os.path.isfile('./raw_datasets/mnist_splits/0degrees/train/'+str(num)+'/'+f[:-3]+'.png'):
 #                 shutil.copyfile(current_file, new_base_dir+degrees_dir+'/train/'+str(num)+'/'+f)
 #             else:
 #                 shutil.copyfile(current_file, new_base_dir+degrees_dir+'/test/'+str(num)+'/'+f)
 
-d=0
-degrees_dir = str(d)+'degrees'
-# os.mkdir(new_base_dir+degrees_dir)
-# os.mkdir(new_base_dir+degrees_dir+'/train')
-# os.mkdir(new_base_dir+degrees_dir+'/test')
 
-for num in range(10):
-    # os.mkdir(new_base_dir+degrees_dir+'/train/'+str(num))
-    # os.mkdir(new_base_dir+degrees_dir+'/test/'+str(num))
-
-    current_dir = base_dir + degrees_dir + '/' + str(num)
-
-    for f in os.listdir(current_dir):
-        current_file = current_dir + '/' + f
-        if os.path.isfile(new_base_dir+'0degrees/train/'+str(num)+'/'+f[:-3]+'.png'):
-            shutil.copyfile(current_file, new_base_dir+degrees_dir+'/train/'+str(num)+'/'+f)
-        else:
-            shutil.copyfile(current_file, new_base_dir+degrees_dir+'/test/'+str(num)+'/'+f)
-
-
-os.mkdir(new_base_dir+'all_train_test_split')
-os.mkdir(new_base_dir+'all_train_test_split/train/')
-os.mkdir(new_base_dir+'all_train_test_split/test/')
+# os.mkdir(new_base_dir+'all_train_test_split')
+# os.mkdir(new_base_dir+'all_train_test_split/train/')
+# os.mkdir(new_base_dir+'all_train_test_split/test/')
 
 for d in range(0, 360, 10):
     degrees_dir = str(d)+'degrees'
