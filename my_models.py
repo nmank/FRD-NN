@@ -10,8 +10,7 @@ def choose_model(model_name):
                                 torch.nn.ReLU(),
                                 torch.nn.Linear(500, 100),
                                 torch.nn.ReLU(),
-                                torch.nn.Linear(100, 10),
-                                torch.nn.ReLU())
+                                torch.nn.Linear(100, 10))
     
     elif model_name == 'frd_triangle_nn_3layer':
         model = torch.nn.Sequential(
@@ -23,6 +22,17 @@ def choose_model(model_name):
                                 torch.nn.ReLU(),
                                 torch.nn.Linear(100, 10),
                                 torch.nn.ReLU())
+    
+    elif model_name == 'frd_triangle_nn_3layer_bnorm':
+        model = torch.nn.Sequential(
+                                torch.nn.BatchNorm1d(728),
+                                torch.nn.Linear(728, 500),
+                                torch.nn.BatchNorm1d(500),
+                                torch.nn.ReLU(),
+                                torch.nn.Linear(500, 100),
+                                torch.nn.BatchNorm1d(100),
+                                torch.nn.ReLU(),
+                                torch.nn.Linear(100, 10))
 
     elif model_name == 'frd_triangle_nn_4layer':
         model = torch.nn.Sequential(
@@ -35,8 +45,7 @@ def choose_model(model_name):
                                 torch.nn.Linear(100, 50),
                                 torch.nn.BatchNorm1d(50),
                                 torch.nn.ReLU(),
-                                torch.nn.Linear(50, 10),
-                                torch.nn.ReLU())
+                                torch.nn.Linear(50, 10))
 
     elif model_name == 'frd_triangle_nn_4layer_dropout':
         model = torch.nn.Sequential(
@@ -49,8 +58,7 @@ def choose_model(model_name):
                                 torch.nn.Linear(100, 100),
                                 torch.nn.Dropout(.5),
                                 torch.nn.ReLU(),
-                                torch.nn.Linear(100, 10),
-                                torch.nn.ReLU())
+                                torch.nn.Linear(100, 10))
 
     elif model_name == 'raw_cnn_1':
         model = torch.nn.Sequential(

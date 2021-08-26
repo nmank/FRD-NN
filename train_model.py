@@ -108,3 +108,41 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
     training_stats['Average Train Accuracy'] = [l for l in train_avgacc]
     training_stats['Average Test Accuracy'] = [l for l in val_avgacc]
     training_stats.to_csv(save_csv_location)
+
+
+def test_model(datapath, model, transformations, batch_size = 64):
+
+    if 'FRD' in datapath:
+
+        def my_loader(path):
+            return torch.load(path)
+
+        image_dataset = {x: datasets.DatasetFolder(os.path.join(datapath, x), loader = my_loader, transform = transformations[x], extensions = '.pt') for x in ['test']}
+    else:
+        image_dataset = {x: datasets.ImageFolder(os.path.join(datapath, x), transformations[x]) for x in ['test']}
+        
+    dataloaders_dict = {x: torch.utils.data.DataLoader(image_dataset[x], batch_size=batch_size, shuffle=False, num_workers=4) for x in ['test']}
+
+
+    model.float()
+
+
+    model.eval()   # Set model to evaluate mode
+
+    running_corrects = 0
+
+    for inputs, labels in dataloaders_dict['test']:
+
+        with torch.set_grad_enabled(False):
+
+            outputs = model(inputs.float())
+            _, preds = torch.max(outputs, 1)
+            
+        
+        running_corrects += torch.sum(preds == labels.data)
+
+    epoch_acc = running_corrects.double() / len(dataloaders_dict['test'].dataset)
+
+    return epoch_acc
+            
+
