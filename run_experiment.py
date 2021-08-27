@@ -8,7 +8,7 @@ import my_models as mm
 
 datapath = './FRD_datasets/mnist_splits/0degrees/'
 
-base_dir = './experiments/mnist/frd/frd_triangle_nn_3layer_lr_p001/'
+base_dir = './experiments/mnist/frd/frd_triangle_nn_3layer_norml_lr_p001/'
 
 # os.mkdir(base_dir)
 # os.mkdir(base_dir + 'model')

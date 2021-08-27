@@ -12,7 +12,7 @@ def choose_model(model_name):
                                 torch.nn.ReLU(),
                                 torch.nn.Linear(100, 10))
     
-    elif model_name == 'frd_triangle_nn_3layer':
+    elif model_name == 'frd_triangle_nn_3layer_lastReLU':
         model = torch.nn.Sequential(
                                 torch.nn.Linear(728, 500),
                                 torch.nn.BatchNorm1d(500),
@@ -22,6 +22,16 @@ def choose_model(model_name):
                                 torch.nn.ReLU(),
                                 torch.nn.Linear(100, 10),
                                 torch.nn.ReLU())
+    
+    elif model_name == 'frd_triangle_nn_3layer':
+        model = torch.nn.Sequential(
+                                torch.nn.Linear(728, 500),
+                                torch.nn.BatchNorm1d(500),
+                                torch.nn.ReLU(),
+                                torch.nn.Linear(500, 100),
+                                torch.nn.BatchNorm1d(100),
+                                torch.nn.ReLU(),
+                                torch.nn.Linear(100, 10))
     
     elif model_name == 'frd_triangle_nn_3layer_bnorm':
         model = torch.nn.Sequential(
@@ -105,5 +115,16 @@ def choose_transforms(transforms_name):
             'test': transforms.Compose([
             ]),
         }
+
+    elif transforms_name == 'frd_nn_norml':
+        data_transforms = {
+            'train': transforms.Compose([
+                transforms.Normalize((348.3645), (855.9980))
+            ]),
+            'test': transforms.Compose([
+                transforms.Normalize((348.3645), (855.9980))
+            ]),
+        }
+
 
     return data_transforms
