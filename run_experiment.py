@@ -6,9 +6,9 @@ import os
 import my_models as mm
 
 
-datapath = './FRD_datasets/mnist_splits/0degrees/'
+datapath = '/data4/mankovic/FRD-NN/FRD_datasets/mnist_splits/all_train_test_split/'
 
-base_dir = './experiments/mnist/frd/frd_triangle_nn_3layer_norml_lr_p001/'
+base_dir = '/data4/mankovic/FRD-NN/experiments/mnist/frd/rotation_augmentation/frd_triangle_nn_3layer_lr_p001/'
 
 # os.mkdir(base_dir)
 # os.mkdir(base_dir + 'model')
@@ -29,4 +29,4 @@ opt = optim.Adadelta(model.parameters(), lr=.001)
 
 # nSamples = list(dict(Counter(image_dataset['train'].targets)).values())
 # weights = torch.tensor([1 - (x / sum(nSamples)) for x in nSamples]).to(device)
-tm.train_model(datapath, model, data_transforms, opt, save_model_location, save_csv_location, 250, batch_size)
+tm.train_model(datapath, model, data_transforms, opt, save_model_location, save_csv_location, 30, batch_size, frd_normalize = True)

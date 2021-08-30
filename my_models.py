@@ -116,15 +116,6 @@ def choose_transforms(transforms_name):
             ]),
         }
 
-    elif transforms_name == 'frd_nn_norml':
-        data_transforms = {
-            'train': transforms.Compose([
-                transforms.Normalize((348.3645), (855.9980))
-            ]),
-            'test': transforms.Compose([
-                transforms.Normalize((348.3645), (855.9980))
-            ]),
-        }
-
+#mean, std (348.3645), (855.9980)
 
     return data_transforms

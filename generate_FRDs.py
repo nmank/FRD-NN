@@ -19,10 +19,10 @@ for i in range(10):
 for d,l in mnist_train_dataset:
     for angle in range(0,360,10):
         image = d.rotate(angle = angle, center = center)
-        image.save('./raw_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.png')
+        image.save('/data4/mankovic/FRD-NN/raw_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.png')
         np_image = np.array(image)
         current_FRD = FRDs(np_image, numPoints, maxR, center)
-        torch.save(torch.tensor(current_FRD), './FRD_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.pt')
+        torch.save(torch.tensor(current_FRD), '/data4/mankovic/FRD-NN/FRD_datasets/mnist/'+str(angle)+'degrees/'+str(l)+'/sample'+str(counts[str(l)])+'.pt')
     counts[str(l)]+=1
 
 

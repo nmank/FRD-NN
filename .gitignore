@@ -4,8 +4,6 @@ __pycache__*
 *.png
 FRD_datasets*
 raw_datasets*
-<<<<<<< HEAD
 *.csv
 *.pth
-=======
->>>>>>> 2b0ea869ad1b380b74cc79e9a37b3b183afc0e91
+run_experiment2.py

@@ -1,6 +1,6 @@
 import os
 
-basedir = './FRD_datasets/mnist/'
+basedir = '/data4/mankovic/FRD-NN/FRD_datasets/mnist/'
 
 for angle in range(0,360,10):
     os.mkdir(basedir + str(angle)+'degrees')

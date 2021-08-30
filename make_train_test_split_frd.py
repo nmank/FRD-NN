@@ -4,8 +4,8 @@ import random
 
 #do pngs
 
-base_dir = './FRD_datasets/mnist/' 
-new_base_dir = './FRD_datasets/mnist_splits/'
+base_dir = '/data4/mankovic/FRD-NN/FRD_datasets/mnist/' 
+new_base_dir = '/data4/mankovic/FRD-NN/FRD_datasets/mnist_splits/'
 
 # os.mkdir(new_base_dir)
 

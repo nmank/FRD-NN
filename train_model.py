@@ -10,9 +10,9 @@ import pandas
 from collections import Counter
 
 
-def train_model(datapath, model, transformations, opt, save_model_location, save_csv_location, num_epochs = 70, batch_size = 64):
+def train_model(datapath, model, transformations, opt, save_model_location, save_csv_location, num_epochs = 70, batch_size = 64, frd_normalize = False):
 
-    if 'FRD' in datapath:
+    if 'frd' in datapath:
 
         def my_loader(path):
             return torch.load(path)
@@ -59,8 +59,11 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
                 opt.zero_grad()
 
                 with torch.set_grad_enabled(phase == 'train'):
-
-                    outputs = model(inputs.float())
+                    
+                    if frd_normalize:
+                        outputs = model((inputs.float()-348.3645)/855.9980)
+                    else:
+                        outputs = model(inputs.float())
                     loss = criterion(outputs, labels)
                     _, preds = torch.max(outputs, 1)
                     
