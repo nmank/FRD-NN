@@ -18,6 +18,8 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
             return torch.load(path)
 
         image_dataset = {x: datasets.DatasetFolder(os.path.join(datapath, x), loader = my_loader, transform = transformations[x], extensions = '.pt') for x in ['train', 'test']}
+
+        model.float()
     else:
         image_dataset = {x: datasets.ImageFolder(os.path.join(datapath, x), transformations[x]) for x in ['train', 'test']}
         
@@ -26,7 +28,7 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
 
     criterion = torch.nn.CrossEntropyLoss()
 
-    model.float()
+    
 
     train_loss=[]
     train_acc=[]
@@ -62,8 +64,10 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
                     
                     if frd_normalize:
                         outputs = model((inputs.float()-348.3645)/855.9980)
-                    else:
+                    elif 'frd' in datapath:
                         outputs = model(inputs.float())
+                    else:
+                        outputs = model(inputs)
                     loss = criterion(outputs, labels)
                     _, preds = torch.max(outputs, 1)
                     
