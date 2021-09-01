@@ -115,7 +115,7 @@ def train_model(datapath, model, transformations, opt, save_model_location, save
 
 def test_model(datapath, model, transformations, batch_size = 64):
 
-    if 'FRD' in datapath:
+    if 'frd' in datapath:
 
         def my_loader(path):
             return torch.load(path)

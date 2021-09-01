@@ -75,7 +75,7 @@ def choose_model(model_name):
                                 torch.nn.Conv2d(1, 10, kernel_size=5),
                                 torch.nn.Conv2d(10, 20, kernel_size=5),
                                 torch.nn.Dropout2d(),
-                                torch.nn.Linear(320, 50),
+                                torch.nn.Linear(20, 50),
                                 torch.nn.ReLU(),
                                 torch.nn.Linear(50, 10))
 
