@@ -1,7 +1,24 @@
 from torchvision import models, transforms
 import torch 
 
+'''
+two functons for choosing a model architecture and a torchvision.transforms
+
+Note: using transforms for a non-image dataset is silly, 
+    therefore the transforms for the FRDs is empty (called frd_nn)
+'''
+
+
+
 def choose_model(model_name):
+    '''
+    get a model
+    
+    Inputs:
+        model_name - a string of the name of the desired model
+    Outputs:
+        model - a pytorch model
+    '''
 
     if model_name == 'raw_triangle_nn_3layer':
         model = torch.nn.Sequential(
@@ -95,6 +112,14 @@ def choose_model(model_name):
     return model
 
 def choose_transforms(transforms_name):
+     '''
+    get a transform for train and test
+    
+    Inputs:
+        tranforms_name - a string of the name of the transforms
+    Outputs:
+        data_transforms - a dictionary with the torchvision.transforms for the dataset
+    '''
 
     if transforms_name == 'raw_nn_RRC':
         data_transforms = {
@@ -128,7 +153,5 @@ def choose_transforms(transforms_name):
             'test': transforms.Compose([
             ]),
         }
-
-#mean, std (348.3645), (855.9980)
 
     return data_transforms
