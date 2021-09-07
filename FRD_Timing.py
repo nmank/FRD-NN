@@ -5,6 +5,12 @@ import numpy as np
 import torchvision
 from PIL import Image
 
+
+'''
+Use how long it'll take to generate one FRD. 
+To find out how long it'll take to generate the FRDs for the entire MNIST datast.
+'''
+
 maxR = 13
 center = [13,13]
 numPoints = 8
@@ -31,6 +37,6 @@ for d,l in mnist_train_dataset:
         print('it took '+str(total_time)+' seconds')
     stop_it = True
 
-print('So it will take ' +str(total_time*60000/60/60)+ ' hours to do it')
+print('So it will take about ' +str(total_time*60000/60/60)+ ' hours to generate all the FRDs')
 
     

@@ -6,19 +6,32 @@ from PIL import Image
 import FRD_Functions
 from scipy import fft
 
+'''
+Plots some intermediate steps of FRD generation. Saves all the plots as files in ./plots.
 
 
+TODO: 
+    -clean up redundant inputs
+    -more commenting
+'''
+
+########
+#Inputs
 radius = 6
-angles = [20,40]
+angles = [20,40] #angles for rotational invariance plots
+
+
 linestyles = ['solid', 'dashed', 'dotted', 'dashdot']
 colors = ['tab:red', 'tab:blue', 'tab:orange', 'tab:green']
 
-maxR = 13
-center = [13,13]
-numPoints = 8
+maxR = 13 #max FRD radius
+center = [13,13] #center for FRD generation
+numPoints = 8 #number of points for the smallest ring
+########
 
 
 mnist_train_dataset = torchvision.datasets.MNIST('/data4/mankovic/FRD-NN/mnist_dataset_torch', train = True)
+
 
 c_vals = {}
 fft_vals = {}
@@ -100,8 +113,12 @@ plt.savefig('./plots/fft.png')
 plt.close()
 
 
+###########################################################################################
 
+#plots of raw images
 
+########
+#More Inputs
 radius = 6
 angles = [0,50,100,300]
 linestyles = ['solid', 'dashed', 'dotted', 'dashdot']
@@ -110,7 +127,7 @@ colors = ['tab:red', 'tab:blue', 'tab:orange', 'tab:green']
 maxR = 13
 center = [13,13]
 numPoints = 8
-
+########
 
 mnist_train_dataset = torchvision.datasets.MNIST('/data4/mankovic/FRD-NN/mnist_dataset_torch', train = True)
 

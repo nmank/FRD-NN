@@ -4,6 +4,12 @@ import numpy as np
 import torchvision
 from PIL import Image
 
+'''
+Generates raw images and FRDs of MNIST dataset with rotations between 0 and 350 degrees in 10 degree increments,
+
+Note: there is no center pixel of a 28x28 image. so we take the center to be at 13,13 and skip the furthest right column and bottom row of pixels.
+'''
+
 maxR = 13
 center = [13,13]
 numPoints = 8
