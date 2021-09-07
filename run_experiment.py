@@ -10,8 +10,8 @@ datapath = '/data4/mankovic/FRD-NN/raw_datasets/mnist_splits/all_train_test_spli
 
 base_dir = '/data4/mankovic/FRD-NN/experiments/mnist/raw/rotation_augmentation/raw_triangle_nn_3layer_lr_p01/'
 
-os.mkdir(base_dir)
-os.mkdir(base_dir + 'model')
+# os.mkdir(base_dir)
+# os.mkdir(base_dir + 'model')
 
 save_model_location = base_dir +'model/model'
 save_csv_location = base_dir +'training_stats.csv'
