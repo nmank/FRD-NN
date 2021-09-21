@@ -112,15 +112,14 @@ def choose_model(model_name):
     return model
 
 def choose_transforms(transforms_name):
-     '''
+    '''
     get a transform for train and test
-    
+
     Inputs:
         tranforms_name - a string of the name of the transforms
     Outputs:
         data_transforms - a dictionary with the torchvision.transforms for the dataset
     '''
-
     if transforms_name == 'raw_nn_RRC':
         data_transforms = {
             'train': transforms.Compose([
